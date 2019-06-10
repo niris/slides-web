@@ -1,0 +1,288 @@
+<!doctype html>
+<meta charset=utf8>
+<style>
+
+.w100 img{width:100%}
+pre>code,p,.remark-slide-content>ul{font-size:150% !important}
+table{width: 100%;border-collapse: collapse;}
+td{border:1px solid grey}
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+</style>
+
+<textarea id="source">
+# Story about web development
+
+.w100[![](so.png)]
+
+## ... for non-webdevelopers
+---
+# What modern website look like
+.w100[![](pos.png)]
+
+
+---
+class: z150
+# What modern website was
+.w100[![](old.jpg)]
+
+
+---
+class: z150
+
+# Back in the 90'
+- no much user => mostly geeks
+- no much databases => MySQL/PostgreSQL/File
+- no framework => made by hand
+
+```sql
+SELECT * FROM user WHERE id=$GET['id']
+```
+
+- no security => HTTP, SQL injection, public port...
+- no interactivity (who care ¯\\＿(ツ)＿/¯ )
+- no much traffic => DB + CGI + assets on same server
+- Browser war (Microsoft fuck up the standard)
+
+---
+class: z150
+
+# What append in 2005
+- Fast growing internet population  
+  19% 2007 => 90% 2017  
+  **=> More user and traffic**
+- iPhone (2007) start smartphone trend  
+  6% 2007 => 80% 2017  
+  **=> Mobile first + App style UX is the norm**
+- New services (Social, Streaming...)  
+	FB:2004, TW:2006, YT:2005  
+	**=> Companies need standard (HTML5, H264)**
+
+---
+class: z150
+
+# New challenges arise
+
+- More traffic
+	- need Clustering, Load balancing, CDN ...
+	- Database parallelization/redundancy
+- More services
+	- Security is now a must (DAO, salt, HTTPS)
+	- Some don't want to handle hardware (Cloud, PAAS...)
+	- Larger/complex services (many entities ...) need typing
+	- Reuse code/pattern => frameworks appear
+- User expect App-like experience
+	- KISS over fonctionalities
+	- Seamless navigation (no loading)
+	- More interactiv (XHR + DOM update)
+	- Transition, Audio, video, geo, 3D ...
+
+---
+class: z150
+
+# What's new in 2015+
+- New jobs/fields (Community Manager, Security, Infra, ...)
+- New Technologies (NoSQL, ES6, TS)
+- New Libraries/Framework (Angular, Laravel, ...)
+- New standard (fetch, querySelector, ES6)  
+- Legacy increase (PHP5, Jquery...)
+
+Let's see what it mean (bad and good) to the developers
+---
+class: z150
+
+# Bad: Web is an App wannabe
+- Data Fetching (animation + transition + async)
+- Pre-load **all pages** and handle they **routing**
+- Lot's of new code (but JS/CSS don't scale)
+  - need compat, modularity, bundling, typing...
+  - none are standard, so **new tools/libs** appeared:  
+  TS, webpack, gulp, bower, grunt, npm, babel, etc.
+- "I heard Angular was good"
+  - Install VSCode + NodeJS + NPM + 950 MB deps + cli
+  - blindly copy-past *outdated* tutorial (WebPack3, Ng2)
+  - You **can't** understand what you are doing
+
+---
+class: z150
+
+# Web summary: The Good
+- Standard include common technics from past years  
+	=> HTML: video, input[pattern,autocomp,type=time]  
+	=> CSS: border-radius, variable, gradient, animation  
+	=> JS: **import**, websocket, async, let/const  
+	=> API: fetch, querySelector, websocket, History  
+- Web engine unifying : Gecko/Webkit
+- Better front/back job separation:
+  - REST API + JSON
+  - Backend: handle client request, return JSON
+  - Frontend: SinglePageApp (Angular/React/Vue)
+  - only need backend for data
+
+let's hope those tools will be obsolete/standardized.
+Meanwhile, TS/JSX depends on those build tools
+---
+
+# Popular libs/frameworks
+
+|         | JS| TS|JSX|Size| ⭐  |
+|---      |:-:|:-:|:-:|---:|---:|
+| Angular |   | ✓ |   |766K| 48K| 
+| React   |   | ✓ | ✓ |133K|130K|
+| Vue     | ✓ | ✓ | ✓ | 58K|140K|
+
+> I'd like to learn webdev, but it's full of shit now  
+> -- anonymous frustrated colleague
+
+Don't want to learn TS (NPM/webpack) ?  
+You have only 1 choice...
+
+> But JS can't do classes, modules (import, export), so I need TS/CoffeScript
+
+**wrong**: it's part of the standard now
+
+---
+class: z150
+
+# LiveCoding: Vue
+
+**Component** based **Library** that keep view and data **sync**
+
+- **Component**: `<g-map lng=.34 lat=.74 />`
+- **Sync**: Writing in an `<input>` will update the data + receiving JSON will update the view
+- **Library**: 1 job, no constraint. want more ? import them.
+
+# Let's Code : Component + SPA
+
+---
+class: z150
+
+# How component look like
+```js
+MyGreeter = {
+	components: {MyFooter},
+	props:['pre'],
+	data: () => ({user:'tom'})
+	template:`<p>
+		Hello {{pre}}{{user}}
+		<input v-bind:value=user>
+		<my-footer></my-footer>
+	</p>`,
+}
+```
+```html
+<my-greeter pre=Mr></my-greeter>
+```
+
+---
+class: z150
+
+```html
+<!doctype html>
+<script src="//unpkg.com/vue"></script>
+<main>
+ <my-header></my-header>
+ hello {{user}}
+ <my-footer></my-footer>
+</main>
+<script>
+MyHeader = {template:`<h1>Welcome</h1>`}
+MyFooter = {template:`<pre>bye</pre>`}
+new Vue({
+    el: 'main',
+    components: {MyHeader, MyFooter},
+    data: () => ({user:'tom'})
+})
+</script>
+```
+
+---
+class: z150
+
+# Demo: SPA (HTML part)
+
+```html
+<!doctype html>
+<script src="//unpkg.com/vue"></script>
+<script src="//unpkg.com/vue-router"></script>
+<main>
+ <nav class="tabs is-full">
+  <a is=router-link :to="'/'">Home</a>
+  <a is=router-link :to="'user'">User</a>
+  <a is=router-link :to="'xxx'">xxx</a>
+ </nav>
+ <router-view />
+</main>
+
+```
+
+---
+class: z150
+
+# Demo: SPA (JS part)
+Create 3 routed Components, and start Vue
+
+```js
+HomePage={template:`<h1>Welcome !</h1>`}
+UserPage={template:`<b>User info:</b>`}
+E404Page={template:`<pre>Woups</pre>`}
+
+let routes = [
+  { path: '/',     component: HomePage},
+  { path: '/user', component: UserPage},
+  { path: '*',     component: E404Page},
+]
+let router = new VueRouter({routes})
+new Vue( {el: 'main', router})
+```
+
+---
+class: z150
+
+# Split our components:
+
+```html
+<script type=module>
+import HomePage from "/HomePage.js";
+...
+</script>
+```
+
+`HomePage.js`:
+```js
+export default {
+	template:`<h1>Welcome</h1>`
+}
+```
+
+---
+class: z150
+
+# Let's wrap up
+
+- The web now is more complex/powerful
+- You are free to keep it simple
+- We created a reactive webapp
+
+# Questions ?
+
+</textarea>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
+<script src="remark.min.js"></script>
+<script>remark.create()</script>
