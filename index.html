@@ -38,13 +38,11 @@ blockquote p {
 
 
 ---
-class: z150
 # What modern website was
 .w100[![](old.jpg)]
 
 
 ---
-class: z150
 
 # Back in the 90'
 - no much user => mostly geeks
@@ -61,7 +59,6 @@ SELECT * FROM user WHERE id=$GET['id']
 - Browser war (Microsoft fuck up the standard)
 
 ---
-class: z150
 
 # What append in 2005
 - Fast growing internet population  
@@ -75,7 +72,6 @@ class: z150
 	**=> Companies need standard (HTML5, H264)**
 
 ---
-class: z150
 
 # New challenges arise
 
@@ -94,7 +90,6 @@ class: z150
 	- Transition, Audio, video, geo, 3D ...
 
 ---
-class: z150
 
 # What's new in 2015+
 - New jobs/fields (Community Manager, Security, Infra, ...)
@@ -105,7 +100,6 @@ class: z150
 
 Let's see what it mean (bad and good) to the developers
 ---
-class: z150
 
 # Bad: Web is an App wannabe
 - Data Fetching (animation + transition + async)
@@ -120,7 +114,6 @@ class: z150
   - You **can't** understand what you are doing
 
 ---
-class: z150
 
 # Web summary: The Good
 - Standard include common technics from past years  
@@ -158,7 +151,6 @@ You have only 1 choice...
 **wrong**: it's part of the standard now
 
 ---
-class: z150
 
 # LiveCoding: Vue
 
@@ -171,7 +163,43 @@ class: z150
 # Let's Code : Component + SPA
 
 ---
-class: z150
+# What's a component
+
+```html
+┌──────┐    ┌──────┐
+│   ┌──┘    └───┐  │
+│ ┌─│props:['p']│  │
+│ │ └───────────┘  │
+│ └▶computed:{c}   │
+│ ┌▶data:()=>{d}   │
+│ └─methods :{m}   │
+│   watch │ :{w}   │
+└────┐ │  │  ┌─────┘
+   ┌─┘ ▼  ▼  └─┐
+   │$emit('ev')│
+   └───────────┘
+```
+---
+
+# What's a component
+
+```html
+┌──────┐    ┌─────────────────────────┐
+│   ┌──┘    └───┐    template:`       │
+│ ┌─│props:['p']│─┐  <input           │
+│ │ └───────────┘ └▶  v-bind:type=p   │
+│ └▶computed:{c} ──▶  v-bind:size=c   │
+│ ┌▶data:()=>{d} ◀─▶  v-model:value=d │
+│ └─methods :{m} ◀──  v-on:click=m    │
+│   watch │ :{w}     ></input>`       │
+└────┐ │  │  ┌────────────────────────┘
+   ┌─┘ ▼  ▼  └─┐
+   │$emit('ev')│
+   └───────────┘
+<my-comp p=text v-on:ev=alert></my-comp>
+```
+
+---
 
 # How component look like
 ```js
@@ -191,7 +219,6 @@ MyGreeter = {
 ```
 
 ---
-class: z150
 
 ```html
 <!doctype html>
@@ -213,7 +240,6 @@ new Vue({
 ```
 
 ---
-class: z150
 
 # Demo: SPA (HTML part)
 
@@ -233,7 +259,6 @@ class: z150
 ```
 
 ---
-class: z150
 
 # Demo: SPA (JS part)
 Create 3 routed Components, and start Vue
@@ -253,7 +278,6 @@ new Vue( {el: 'main', router})
 ```
 
 ---
-class: z150
 
 # Split our components:
 
@@ -272,7 +296,6 @@ export default {
 ```
 
 ---
-class: z150
 
 # Let's wrap up
 
