@@ -2,7 +2,7 @@
 <meta charset=utf8>
 <style>
 
-.w100 img{width:100%}
+img{width:100%}
 pre>code,p,.remark-slide-content>ul{font-size:150% !important}
 table{width: 100%;border-collapse: collapse;}
 td{border:1px solid grey}
@@ -27,26 +27,21 @@ blockquote p {
 </style>
 
 <textarea id="source">
-# Story about web development
+![](so.png)
 
-.w100[![](so.png)]
+---
+# What old website was like
+![](https://www.webdesignmuseum.org/uploaded/fullscreen/bbcnc-org-uk-1995.png)
 
-## ... for non-webdevelopers
 ---
 # What modern website look like
-.w100[![](pos.png)]
-
-
----
-# What modern website was
-.w100[![](old.jpg)]
-
+![](pos.png)
 
 ---
 
 # Back in the 90'
 - no much user => mostly geeks
-- no much databases => MySQL/PostgreSQL/File
+- no much databases => Plain file/MySQL/PostgreSQL
 - no framework => made by hand
 
 ```sql
@@ -61,15 +56,20 @@ SELECT * FROM user WHERE id=$GET['id']
 ---
 
 # What append in 2005
-- Fast growing internet population  
-  19% 2007 => 90% 2017  
+- Growing internet population  
+  [17% 1998 => 81% 2018][1] (dev world)  
   **=> More user and traffic**
-- iPhone (2007) start smartphone trend  
-  6% 2007 => 80% 2017  
+- iphone (2007) start smartphone trend  
+  [6% 2007 => 81% 2017][2] (US)  
   **=> Mobile first + App style UX is the norm**
 - New services (Social, Streaming...)  
 	FB:2004, TW:2006, YT:2005  
 	**=> Companies need standard (HTML5, H264)**
+
+![](https://i.imgur.com/bEkVcTq.jpg)
+
+[1]: https://en.wikipedia.org/wiki/Global_Internet_usage#Internet_users
+[2]: https://www.comscore.com/Insights/Blog/US-Smartphone-Penetration-Surpassed-80-Percent-in-2016
 
 ---
 
@@ -113,6 +113,8 @@ Let's see what it mean (bad and good) to the developers
   - blindly copy-past *outdated* tutorial (WebPack3, Ng2)
   - You **can't** understand what you are doing
 
+let's hope those **tools** will be standardized (obsolete).
+Meanwhile, TS/JSX depends on those build tools
 ---
 
 # Web summary: The Good
@@ -126,29 +128,25 @@ Let's see what it mean (bad and good) to the developers
   - REST API + JSON
   - Backend: handle client request, return JSON
   - Frontend: SinglePageApp (Angular/React/Vue)
-  - only need backend for data
 
-let's hope those tools will be obsolete/standardized.
-Meanwhile, TS/JSX depends on those build tools
 ---
 
 # Popular libs/frameworks
 
-|         | JS| TS|JSX|Size| ⭐  |
-|---      |:-:|:-:|:-:|---:|---:|
-| Angular |   | ✓ |   |766K| 48K| 
-| React   |   | ✓ | ✓ |133K|130K|
-| Vue     | ✓ | ✓ | ✓ | 58K|140K|
+|            | JS| TS|JSX|Size|  ⭐ |npm i| jobs (tlse)
+|---         |:-:|:-:|:-:|---:|---:|----:|------:
+|[Angular][1]|   | ✓ |   |766K| 48K| 442k| 300
+| [React][2] |   | ✓ | ✓ |133K|130K|4970k| 113
+| [Vue][3]   | ✓ | ✓ | ✓ | 58K|140K| 953k| 31
 
-> I'd like to learn webdev, but it's full of shit now  
-> -- anonymous frustrated colleague
+> I'd like to learn webdev, but not TS, npm, webpack
 
-Don't want to learn TS (NPM/webpack) ?  
-You have only 1 choice...
+Well ... don't learn duh !
+![](https://i.imgur.com/Lnw5i8h.jpg)
 
-> But JS can't do classes, modules (import, export), so I need TS/CoffeScript
-
-**wrong**: it's part of the standard now
+[1]:https://github.com/angular/angular
+[2]:https://github.com/vuejs/vue      
+[3]:https://github.com/facebook/react 
 
 ---
 
@@ -156,11 +154,9 @@ You have only 1 choice...
 
 **Component** based **Library** that keep view and data **sync**
 
-- **Component**: `<g-map lng=.34 lat=.74 />`
-- **Sync**: Writing in an `<input>` will update the data + receiving JSON will update the view
 - **Library**: 1 job, no constraint. want more ? import them.
-
-# Let's Code : Component + SPA
+- **Sync**: Writing in an `<input>` will update the data + receiving JSON will update the view
+- **Component**: `<g-map lng=3.34 lat=8.74 />`
 
 ---
 # What's a component
@@ -203,9 +199,9 @@ You have only 1 choice...
 
 # How component look like
 ```js
-MyGreeter = {
+SayHello = {
 	components: {MyFooter},
-	props:['pre'],
+	props:['prefix'],
 	data: () => ({user:'tom'})
 	template:`<p>
 		Hello {{pre}}{{user}}
@@ -215,7 +211,7 @@ MyGreeter = {
 }
 ```
 ```html
-<my-greeter pre=Mr></my-greeter>
+<say-hello prefix=Mr></say-hello>
 ```
 
 ---
@@ -297,11 +293,8 @@ export default {
 
 ---
 
-# Let's wrap up
-
-- The web now is more complex/powerful
-- You are free to keep it simple
-- We created a reactive webapp
+*The web now is more complex & powerful,  
+but you are free to keep it simple. stupid.*
 
 # Questions ?
 
