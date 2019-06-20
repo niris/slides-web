@@ -1,7 +1,8 @@
 <!doctype html>
 <meta charset=utf8>
+<script src="https://unpkg.com/vue"></script>
 <style>
-
+body{font-family:'Liberation Serif';}
 img{width:100%}
 pre>code,p,.remark-slide-content>ul{font-size:150% !important}
 table{width: 100%;border-collapse: collapse;}
@@ -152,7 +153,7 @@ Well ... don't learn duh !
 
 # LiveCoding: Vue
 
-**Component** based **Library** that keep view and data **sync**
+**Component** based **Library** that **sync** `view ⇄ data`
 
 - **Library**: 1 job, no constraint. want more ? import them.
 - **Sync**: Writing in an `<input>` will update the data + receiving JSON will update the view
@@ -181,7 +182,7 @@ Well ... don't learn duh !
 
 ```html
 ┌──────┐    ┌─────────────────────────┐
-│   ┌──┘    └───┐    template:`       │
+│   ┌──┘    └───┐ el/template:`       │
 │ ┌─│props:['p']│─┐  <input           │
 │ │ └───────────┘ └▶  v-bind:type=p   │
 │ └▶computed:{c} ──▶  v-bind:size=c   │
@@ -198,6 +199,7 @@ Well ... don't learn duh !
 ---
 
 # How component look like
+
 ```js
 SayHello = {
 	components: {MyFooter},
@@ -205,7 +207,7 @@ SayHello = {
 	data: () => ({user:'tom'})
 	template:`<p>
 		Hello {{pre}}{{user}}
-		<input v-bind:value=user>
+		<input v-model:value=user>
 		<my-footer></my-footer>
 	</p>`,
 }
@@ -213,6 +215,29 @@ SayHello = {
 ```html
 <say-hello prefix=Mr></say-hello>
 ```
+
+---
+
+# Data binding
+
+```html
+<main id=demo>
+  <input v-model:value=demo>
+  <input v-model:value=demo>
+</main>
+```
+
+```js
+new Vue({
+  el:'#demo',
+  data:()=>({demo:"init"})
+})
+```
+
+<main id=demo>
+  <input v-model:value=demo>
+  <input v-model:value=demo>
+</main>
 
 ---
 
@@ -301,4 +326,7 @@ but you are free to keep it simple. stupid.*
 </textarea>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
 <script src="remark.min.js"></script>
-<script>remark.create()</script>
+<script>
+remark.create()
+new Vue({el:'main#demo', data:()=>({demo:"init"})})
+</script>
