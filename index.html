@@ -58,10 +58,10 @@ SELECT * FROM user WHERE id=$GET['id']
 
 # What append in 2005
 - Growing internet population  
-  [17% 1998 => 81% 2018][1] (dev world)  
+  [17% 1998 => 81% 2018][intpop] (dev world)  
   **=> More user and traffic**
 - iphone (2007) start smartphone trend  
-  [6% 2007 => 81% 2017][2] (US)  
+  [6% 2007 => 81% 2017][smartpop] (US)  
   **=> Mobile first + App style UX is the norm**
 - New services (Social, Streaming...)  
 	FB:2004, TW:2006, YT:2005  
@@ -69,8 +69,8 @@ SELECT * FROM user WHERE id=$GET['id']
 
 ![](https://i.imgur.com/bEkVcTq.jpg)
 
-[1]: https://en.wikipedia.org/wiki/Global_Internet_usage#Internet_users
-[2]: https://www.comscore.com/Insights/Blog/US-Smartphone-Penetration-Surpassed-80-Percent-in-2016
+[intpop]: https://en.wikipedia.org/wiki/Global_Internet_usage#Internet_users
+[smartpop]: https://www.comscore.com/Insights/Blog/US-Smartphone-Penetration-Surpassed-80-Percent-in-2016
 
 ---
 
@@ -99,7 +99,7 @@ SELECT * FROM user WHERE id=$GET['id']
 - New standard (fetch, querySelector, ES6)  
 - Legacy increase (PHP5, Jquery...)
 
-Let's see what it mean (bad and good) to the developers
+=> Let's focus on what's good/bad for the web devs
 ---
 
 # Bad: Web is an App wannabe
@@ -118,17 +118,18 @@ let's hope those **tools** will be standardized (obsolete).
 Meanwhile, TS/JSX depends on those build tools
 ---
 
-# Web summary: The Good
+# Good: Cleaner and powerfull
+- Better front/back separation:
+  - Backend: handle client (iOS, Android, web) request  
+    => most popular = HTTPS + REST + JSON
+  - Frontend: SinglePageApp (Angular/React/Vue/...)  
+    => Client do the routing + page display
 - Standard include common technics from past years  
 	=> HTML: video, input[pattern,autocomp,type=time]  
 	=> CSS: border-radius, variable, gradient, animation  
 	=> JS: **import**, websocket, async, let/const  
 	=> API: fetch, querySelector, websocket, History  
 - Web engine unifying : Gecko/Webkit
-- Better front/back job separation:
-  - REST API + JSON
-  - Backend: handle client request, return JSON
-  - Frontend: SinglePageApp (Angular/React/Vue)
 
 ---
 
@@ -146,8 +147,8 @@ Well ... don't learn duh !
 ![](https://i.imgur.com/Lnw5i8h.jpg)
 
 [1]:https://github.com/angular/angular
-[2]:https://github.com/vuejs/vue      
-[3]:https://github.com/facebook/react 
+[2]:https://github.com/facebook/react 
+[3]:https://github.com/vuejs/vue      
 
 ---
 
@@ -158,39 +159,40 @@ Well ... don't learn duh !
 - **Library**: 1 job, no constraint. want more ? import them.
 - **Sync**: Writing in an `<input>` will update the data + receiving JSON will update the view
 - **Component**: `<g-map lng=3.34 lat=8.74 />`
-
+![](https://i.imgur.com/7XjvVxJ.png)
 ---
 # What's a component
 
 ```html
-┌──────┐    ┌──────┐
-│   ┌──┘    └───┐  │
-│ ┌─│props:['p']│  │
-│ │ └───────────┘  │
-│ └▶computed:{c}   │
-│ ┌▶data:()=>{d}   │
-│ └─methods :{m}   │
-│   watch │ :{w}   │
-└────┐ │  │  ┌─────┘
-   ┌─┘ ▼  ▼  └─┐
+┌─────┐     ┌─────┐
+│  ┌──┘     └──┐  │
+│┌─│props:['p']│  │
+││ └───────────┘  │
+│└▶computed:{c}   │
+│┌▶data:()=>{d}   │
+│└─methods :{m}   │
+│  watch │ :{w}   │
+└─────┐│ │  ┌─────┘
+   ┌──┘▼ ▼  └──┐
    │$emit('ev')│
    └───────────┘
+<my-comp p=text v-on:ev=alert></my-comp>
 ```
 ---
 
 # What's a component
 
 ```html
-┌──────┐    ┌─────────────────────────┐
-│   ┌──┘    └───┐ el/template:`       │
-│ ┌─│props:['p']│─┐  <input           │
-│ │ └───────────┘ └▶  v-bind:type=p   │
-│ └▶computed:{c} ──▶  v-bind:size=c   │
-│ ┌▶data:()=>{d} ◀─▶  v-model:value=d │
-│ └─methods :{m} ◀──  v-on:click=m    │
-│   watch │ :{w}     ></input>`       │
-└────┐ │  │  ┌────────────────────────┘
-   ┌─┘ ▼  ▼  └─┐
+┌─────┐     ┌────────────────────────┐
+│  ┌──┘     └──┐ el/template:`       │
+│┌─│props:['p']│─┐  <input           │
+││ └───────────┘ └▶  v-bind:type=p   │
+│└▶computed:{c} ──▶  v-bind:size=c   │
+│┌▶data:()=>{d} ◀─▶  v-model:value=d │
+│└─methods :{m} ◀──  v-on:click=m    │
+│  watch │ :{w}     ></input>`       │
+└─────┐│ │  ┌────────────────────────┘
+   ┌──┘▼ ▼  └──┐
    │$emit('ev')│
    └───────────┘
 <my-comp p=text v-on:ev=alert></my-comp>
@@ -198,51 +200,51 @@ Well ... don't learn duh !
 
 ---
 
-# How component look like
+# Example 0: Basic dependency
 
-```js
-SayHello = {
-	components: {MyFooter},
+```javascript
+let MyFooter = {template:`<b>bye</b>`}
+let SayHello = {
 	props:['prefix'],
-	data: () => ({user:'tom'})
-	template:`<p>
-		Hello {{pre}}{{user}}
+	data(){return {user:'tom'}},
+	template:`<p>Hi {{prefix}} {{user}}
 		<input v-model:value=user>
-		<my-footer></my-footer>
-	</p>`,
+		<MyFooter/> <my-footer/> </p>`,
+	components: {MyFooter},
 }
 ```
 ```html
 <say-hello prefix=Mr></say-hello>
 ```
-
+<main id=ex0>
+<say-hello prefix=Mr></say-hello>
+</main>
 ---
 
-# Data binding
-
-```html
-<main id=demo>
-  <input v-model:value=demo>
-  <input v-model:value=demo>
-</main>
-```
+# Data binding Example
 
 ```js
-new Vue({
-  el:'#demo',
-  data:()=>({demo:"init"})
-})
+TripleInput = {
+ data(){return {demo:"init"}},
+ template:`<span>Triple:
+   <input v-for="i in 3"
+     v-bind:size=i
+     v-model:value=demo>
+ </span>`}
 ```
-
-<main id=demo>
-  <input v-model:value=demo>
-  <input v-model:value=demo>
+```html
+	<triple-input></triple-input>
+	<triple-input></triple-input>
+```
+<main id=ex1>
+	<triple-input></triple-input>
+	<triple-input></triple-input>
 </main>
 
 ---
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <script src="//unpkg.com/vue"></script>
 <main>
  <my-header></my-header>
@@ -253,9 +255,9 @@ new Vue({
 MyHeader = {template:`<h1>Welcome</h1>`}
 MyFooter = {template:`<pre>bye</pre>`}
 new Vue({
-    el: 'main',
-    components: {MyHeader, MyFooter},
-    data: () => ({user:'tom'})
+  el: 'main',
+  data: () => ({user:'tom'})
+  components: {MyHeader, MyFooter},
 })
 </script>
 ```
@@ -265,7 +267,7 @@ new Vue({
 # Demo: SPA (HTML part)
 
 ```html
-<!doctype html>
+<!DOCTYPE html> <!-- Page Example -->
 <script src="//unpkg.com/vue"></script>
 <script src="//unpkg.com/vue-router"></script>
 <main>
@@ -293,7 +295,7 @@ let routes = [
   { path: '/',     component: HomePage},
   { path: '/user', component: UserPage},
   { path: '*',     component: E404Page},
-]
+]; // mode = "history"
 let router = new VueRouter({routes})
 new Vue( {el: 'main', router})
 ```
@@ -315,18 +317,45 @@ export default {
 	template:`<h1>Welcome</h1>`
 }
 ```
-
 ---
 
 *The web now is more complex & powerful,  
 but you are free to keep it simple. stupid.*
 
-# Questions ?
+# Questions ?  
+
+
+### Ressources
+
+- [VAR Benchmarks](https://stefankrause.net/js-frameworks-benchmark8/table.html)
+- [V/R Differences](https://medium.com/javascript-in-plain-english/-e9a1ae8077fd)
 
 </textarea>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remark/0.14.0/remark.min.js"></script>
 <script src="remark.min.js"></script>
 <script>
 remark.create()
-new Vue({el:'main#demo', data:()=>({demo:"init"})})
+
+let MyFooter = {template:`<b>bye</b>`}
+let SayHello = {
+	props:['prefix'],
+	data: () => ({user:'tom'}),
+	template:`<p>Hi {{prefix}} {{user}}
+		<input v-model:value=user>
+		<MyFooter/> <my-footer/> </p>`,
+	components: {MyFooter},
+}
+
+new Vue({el:'main#ex0', components:{SayHello}})
+
+TripleInput = {
+ data(){return {demo:"init"}},
+ template:`<span>Triple:
+   <input v-for="i in 3"
+   v-bind:size=i*i 
+   v-model:value=demo>
+ </span>`}
+
+new Vue({el:'main#ex1', components:{TripleInput}})
+
 </script>
