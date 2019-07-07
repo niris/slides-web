@@ -41,9 +41,10 @@ blockquote p {
 ---
 
 # Back in the 90'
-- no much user => mostly geeks
-- no much databases => Plain file/MySQL/PostgreSQL
-- no framework => made by hand
+- not much user => mostly geeks
+- not much databases => Plain file/MySQL/PostgreSQL
+- not much framework => mostly handmade
+- not much traffic => DB + CGI + assets on the same server
 
 ```sql
 SELECT * FROM user WHERE id=$GET['id']
@@ -51,7 +52,6 @@ SELECT * FROM user WHERE id=$GET['id']
 
 - no security => HTTP, SQL injection, public port...
 - no interactivity (who care ¯\\＿(ツ)＿/¯ )
-- no much traffic => DB + CGI + assets on same server
 - Browser war (Microsoft fuck up the standard)
 
 ---
@@ -60,7 +60,7 @@ SELECT * FROM user WHERE id=$GET['id']
 - Growing internet population  
   [17% 1998 => 81% 2018][intpop] (dev world)  
   **=> More user and traffic**
-- iphone (2007) start smartphone trend  
+- iphone (2007) starts smartphone trends  
   [6% 2007 => 81% 2017][smartpop] (US)  
   **=> Mobile first + App style UX is the norm**
 - New services (Social, Streaming...)  
@@ -77,7 +77,7 @@ SELECT * FROM user WHERE id=$GET['id']
 # New challenges arise
 
 - More traffic
-	- need Clustering, Load balancing, CDN ...
+	- Need clustering, Load balancing, CDN ...
 	- Database parallelization/redundancy
 - More services
 	- Security is now a must (DAO, salt, HTTPS)
@@ -96,35 +96,35 @@ SELECT * FROM user WHERE id=$GET['id']
 - New jobs/fields (Community Manager, Security, Infra, ...)
 - New Technologies (NoSQL, ES6, TS)
 - New Libraries/Framework (Angular, Laravel, ...)
-- New standard (fetch, querySelector, ES6)  
+- New standards (fetch, querySelector, ES6)  
 - Legacy increase (PHP5, Jquery...)
 
 => Let's focus on what's good/bad for the web devs
 ---
 
-# Bad: Web is an App wannabe
+# 👎 Web became App wannabe
 - Data Fetching (animation + transition + async)
-- Pre-load **all pages** and handle they **routing**
-- Lot's of new code (but JS/CSS don't scale)
-  - need compat, modularity, bundling, typing...
-  - none are standard, so **new tools/libs** appeared:  
+- Pre-load **all pages** and handle their **routing**
+- A lot of new code (but JS/CSS don't scale)
+  - Need compat, modularity, bundling, typing...
+  - None are standard, so **new tools/libs** appeared:  
   TS, webpack, gulp, bower, grunt, npm, babel, etc.
 - "I heard Angular was good"
-  - Install VSCode + NodeJS + NPM + 950 MB deps + cli
-  - blindly copy-past *outdated* tutorial (WebPack3, Ng2)
+  - Install VSCode + NodeJS + NPM + 950 MB deps + CLI
+  - Blindly copy-past *outdated* tutorial (WebPack3, Ng2)
   - You **can't** understand what you are doing
 
-let's hope those **tools** will be standardized (obsolete).
-Meanwhile, TS/JSX depends on those build tools
+Let's hope those **tools** will be standardized (obsolete).
+Meanwhile, TS/JSX depend on those build tools
 ---
 
-# Good: Cleaner and powerfull
+# 👍 Cleaner and powerful API
 - Better front/back separation:
   - Backend: handle client (iOS, Android, web) request  
     => most popular = HTTPS + REST + JSON
   - Frontend: SinglePageApp (Angular/React/Vue/...)  
     => Client do the routing + page display
-- Standard include common technics from past years  
+- Standard includes common techniques from past years  
 	=> HTML: video, input[pattern,autocomp,type=time]  
 	=> CSS: border-radius, variable, gradient, animation  
 	=> JS: **import**, websocket, async, let/const  
@@ -133,7 +133,7 @@ Meanwhile, TS/JSX depends on those build tools
 
 ---
 
-# Popular Front-end libs/fw
+# Popular Front-end technos
 
 [![](https://i.imgur.com/qYgz7S6.png)](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190)
 
@@ -165,7 +165,7 @@ Well ... don't learn duh !
 **Component** based **Library** that **sync** `view ⇄ data`
 
 - **Library**: 1 job, no constraint. want more ? import them.
-- **Sync**: Writing in an `<input>` will update the data + receiving JSON will update the view
+- **Sync**: Writing in an `<input>` will update the data + fetch-ed JSON will automatically update the view
 - **Component**: `<g-map lng=3.34 lat=8.74 />`
 ![](https://i.imgur.com/7XjvVxJ.png)
 ---
@@ -327,8 +327,8 @@ export default {
 ```
 ---
 
-*The web now is more complex & powerful,  
-but you are free to keep it simple. stupid.*
+*The web is now more complex & powerful,  
+but you are free to KISS.*
 
 # Questions ?  
 
