@@ -1,0 +1,21 @@
+{
+  "name": "Slides Web",
+  "short_name": "Slides Web",
+  "description": "Slides Web Presentation",
+  "icons": [
+    {
+      "src": "/slides-web/logo.png",
+      "sizes": "64x64 96x96 128x128 192x192 256x256 512x512"
+    }
+  ],
+  "serviceworker__unused": {
+    "src": "/slides-web/sw.js",
+    "scope": "/slides-web",
+    "update_via_cache": "none"
+  },
+  "start_url": "/slides-web/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#065b9d",
+  "theme_color": "#da1d50"
+}
