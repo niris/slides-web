@@ -1,5 +1,4 @@
 ![](https://i.imgur.com/EKPtgdk.png)
-
 ---
 # What old website was like
 ![](https://i.imgur.com/qCRpR5n.png)
@@ -9,10 +8,10 @@
 ![](https://i.imgur.com/BEyndbb.png)
 ---
 # imgur.com exemple
-- must serve 1 image (43KB)
-- 17.6MB/123 files = 5s (fiber)
+- Expectation: serve 1 image (43KB)
+- Reality: 17.6MB/123 files
 ![](https://i.imgur.com/hfYBBlz.png)
-[Source](https://twitter.com/csswizardry/status/1185604806901207045?lang=en)
+[Source: Twitter](https://twitter.com/csswizardry/status/1185604806901207045?lang=en)
 ---
 
 # Back in the 90'
@@ -42,7 +41,9 @@ SELECT * FROM user WHERE id=$GET['id']
 	Facebook:2004, Twitter:2006, YouTube:2005  
 	**=> Companies need standard (HTML5, H264)**
 
-![](https://i.imgur.com/bEkVcTq.jpg)
+## What could go wrong ...
+
+<!--![](https://i.imgur.com/bEkVcTq.jpg)-->
 
 [intpop]: https://en.wikipedia.org/wiki/Global_Internet_usage#Internet_users
 [smartpop]: https://www.comscore.com/Insights/Blog/US-Smartphone-Penetration-Surpassed-80-Percent-in-2016
@@ -74,10 +75,10 @@ SELECT * FROM user WHERE id=$GET['id']
 - New standards (fetch, querySelector, ES6)  
 - Legacy increase (PHP5, Jquery...)
 
-=> Let's focus on what's good/bad for the web devs
+### What's good👍/bad👎 for the web devs ...
 ---
 
-# 👎 Web became App wannabe
+# 👎 Web want to be an native app
 - Data Fetching (animation + transition + async)
 - Pre-load **all pages** and handle their **routing**
 - A lot of new code (but JS/CSS don't scale)
@@ -85,7 +86,7 @@ SELECT * FROM user WHERE id=$GET['id']
   - None are standard, so **new tools/libs** appeared:  
   TS, webpack, gulp, bower, grunt, npm, babel, etc.
 - "I heard Angular was good"
-  - Install VSCode + NodeJS + NPM + 950 MB deps + CLI
+  - Install VSCode + NodeJS + NPM + 950MB deps + cli
   - Blindly copy-past *outdated* tutorial (WebPack3, Ng2)
   - You **can't** understand what you are doing
 
@@ -94,7 +95,7 @@ Meanwhile, TS/JSX depend on those build tools
 ---
 
 # 👍 Cleaner and powerful API
-- Web engine unifying : Gecko/Webkit
+- Web engine unifying : Gecko/Webkit (safari = new IE)
 - Standard includes common techniques from past years  
 	=> HTML: video, input[pattern,autocomp,type=time]  
 	=> CSS: border-radius, variable, gradient, animation  
@@ -113,11 +114,12 @@ Meanwhile, TS/JSX depend on those build tools
 ┌────────────────────────────┐
 │TV │ iOS │ Android │ Web ...│
 └────────────────────────────┘
-  └───┴─┬──────┴──────┘ │ 
-   JSON │         files │
+        │               │
+  JSON  │        static │
+REST API│        files  │
         │               │
 ┌[api.site.fr]┐┌[www.site.fr]┐
-│   Symfony   ││    NGINX    │
+│php/py/rb/jar││    NGINX    │
 ├─────────────┤│ - vue.js    │
 │    mySQL    ││ - index.html│
 └─────────────┘└─────────────┘
@@ -130,27 +132,9 @@ Meanwhile, TS/JSX depend on those build tools
 # Popular Front-end technos
 
 [![](https://i.imgur.com/qYgz7S6.png)](https://gist.github.com/tkrotoff/b1caa4c3a185629299ec234d2314e190)
-
-|            | JS| TS|JSX|Size|  ⭐ |npm i| jobs (tlse)
-|---         |:-:|:-:|:-:|---:|---:|----:|------:
-|[Angular][1]|   | ✓ |   |766K| 48K| 442k| 300
-| [React][2] |   | ✓ | ✓ |133K|130K|4970k| 113
-| [Vue][3]   | ✓ | ✓ | ✓ | 58K|140K| 953k| 31
-
-[1]:https://github.com/angular/angular
-[2]:https://github.com/facebook/react 
-[3]:https://github.com/vuejs/vue      
-
----
-
-> I'd like to learn webdev, but not TS, npm, webpack
-
----
-
-> I'd like to learn webdev, but not TS, npm, webpack
-
-Well ... don't learn duh !
-![](https://i.imgur.com/Lnw5i8h.jpg)
+- Want to learn [Angular](https://github.com/angular/angular) (766K) ? need TS (+ npm + ...) 😢
+- Want to learn [React](https://github.com/facebook/react ) (133K) ? need JSX (+ npm + ...) 😢
+- Want to learn [Vue](https://github.com/vuejs/vue) (58K) ? **don't need anything !** 😄
 
 ---
 
@@ -304,7 +288,7 @@ new Vue( {el: 'main', router})
 
 ---
 
-# Split our components:
+# Split our components (JSM):
 
 ```html
 <script type=module>
@@ -321,13 +305,17 @@ export default {
 ```
 ---
 
-*The web is now more complex & powerful,  
-but you are free to KISS.*
+# Conclusion
+
+- You can learn modern web development without learning TS / npm / webpack ...
+
+- The web is now more complex & powerful, but you can **Keep It Simple**.
 
 # Questions ?  
 
+---
 
-### Ressources
+# Bonus: Frontend Differences
 
 - [VAR Benchmarks](https://stefankrause.net/js-frameworks-benchmark8/table.html)
 - [V/R Differences](https://medium.com/javascript-in-plain-english/-e9a1ae8077fd)
